@@ -91,7 +91,7 @@
 
 for (let i = 0; i < 1000; i++) {
   const smiley = document.createElement("span");
-  smiley.innerHTML = "MERCIIIIII";
+  smiley.innerHTML = "👽";
   smiley.style.position = "fixed";
   smiley.style.top = Math.floor(Math.random() * window.innerHeight) + "px";
   smiley.style.left = Math.floor(Math.random() * window.innerWidth) + "px";
@@ -108,9 +108,9 @@ setTimeout(() => {
 }, 5000);
         });
         
-        
-        
     }
+
+
   </script>
 </head>
 <body> 
@@ -122,7 +122,49 @@ setTimeout(() => {
     <input type="text" name="name" placeholder="Name">
     <input type="text" name="firstName" placeholder="Vorname">
     <input type="text" name="phoneNumber" placeholder="Telefonnummer">
-    <input type="text" name="item" placeholder="Artikel">
+    <label for="item">Artikel:</label>
+    <select name="item" id="item">
+      <option value="Abfallsäcke">Abfallsäcke</option>
+      <option value="Ablaufbecken">Ablaufbecken</option>
+      <option value="Aschenbecher">Aschenbecher</option>
+      <option value="Ausgüsse">Ausgüsse</option>
+      <option value="Auffangbecken Kanister">Auffangbecken Kanister</option>
+      <option value="Bar Elemente">Bar Elemente</option>
+      <option value="Eis">Eis</option>
+      <option value="Eischaufeln">Eischaufeln</option>
+      <option value="Eiskübel Bar (10l)">Eiskübel Bar (10l)</option>
+      <option value="Flaschenöffner">Flaschenöffner</option>
+      <option value="Gummimatten Bar">Gummimatten Bar</option>
+      <option value="Gurkenbehälter">Gurkenbehälter</option>
+      <option value="Grillspiess">Grillspiess</option>
+      <option value="Holzstäbli">Holzstäbli</option>
+      <option value="Handtücher">Handtücher</option>
+      <option value="Kanister Wasser">Kanister Wasser</option>
+      <option value="Kehrschaufel">Kehrschaufel</option>
+      <option value="Kühlschränke">Kühlschränke</option>
+      <option value="Leuchtbecher (Red Bull)">Leuchtbecher (Red Bull)</option>
+      <option value="Limettenbehälter">Limettenbehälter</option>
+      <option value="Longdrinkglässer (3dl)">Longdrinkglässer (3dl)</option>
+      <option value="Lumpen">Lumpen</option>
+      <option value="Messer">Messer</option>
+      <option value="Papierrollen">Papierrollen</option>
+      <option value="PET Säcke">PET Säcke</option>
+      <option value="Pfefferkörner Schale">Pfefferkörner Schale</option>
+      <option value="Putzeimer">Putzeimer</option>
+      <option value="Salzstreuer">Salzstreuer</option>
+      <option value="Schneidbretter">Schneidbretter</option>
+      <option value="Seife">Seife</option>
+      <option value="Servietten">Servietten</option>
+      <option value="Shotgläser (2cl)">Shotgläser (2cl)</option>
+      <option value="Sparschäler">Sparschäler</option>
+      <option value="Sackkarre (Heineken)">Sackkarre (Heineken)</option>
+      <option value="Sackkarre (Terrazzza)">Sackkarre (Terrazzza)</option>
+      <option value="Tisch Backbar">Tisch Backbar</option>
+      <option value="Vorschlaghammer">Vorschlaghammer</option>
+      <option value="Wassermelonenbehälter gross">Wassermelonenbehälter gross</option>
+      <option value="Weinkühler">Weinkühler</option>
+    
+</select>
     <input type="number" name="quantity" placeholder="Anzahl">
     <button type="button" onclick="sendData()">Senden</button>
   </form>
