@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Terrazzza 2023 - Waren Ausgabe</title>
@@ -69,6 +70,45 @@
     }
   </style>
   <script>
+
+function setCookie(name, value, days) {
+  var expires = "";
+  if (days) {
+    var date = new Date();
+    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    expires = "; expires=" + date.toUTCString();
+  }
+  document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+}
+
+function getCookie(name) {
+  var nameEQ = name + "=";
+  var ca = document.cookie.split(';');
+  for(var i=0;i < ca.length;i++) {
+    var c = ca[i];
+    while (c.charAt(0)==' ') c = c.substring(1,c.length);
+    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+  }
+  return null;
+}
+
+function fillFormFields() {
+  var name = getCookie("name");
+  var firstName = getCookie("firstName");
+  var phoneNumber = getCookie("phoneNumber");
+  if (name) {
+    document.getElementById("name").value = name;
+  }
+  if (firstName) {
+    document.getElementById("firstName").value = firstName;
+  }
+  if (phoneNumber) {
+    document.getElementById("phoneNumber").value = phoneNumber;
+  }
+}
+
+
+
     function sendData() {
       const form = document.getElementById("qr-form");
       const url = "https://script.google.com/macros/s/AKfycbwfWoSRyO1uDKcKU_3blj4XTFmWEuXT_FkzyFJCMoCrqx-lqJJQOda_0Yc4K5MHTED2rA/exec";
@@ -79,6 +119,11 @@
         item: form.item.value,
         quantity: form.quantity.value,
       };
+
+        // Set cookies for Name, Vorname and Telefonnummer
+  setCookie("name", data.name, 30);
+  setCookie("firstName", data.firstName, 30);
+  setCookie("phoneNumber", data.phoneNumber, 30);
 
       fetch(url, {
         method: "POST",
@@ -119,9 +164,9 @@ setTimeout(() => {
     <img src="logo.png" alt="Logo" width="600" height="150"> <!-- Beispiel: Logo-Bild "logo.png" mit Breite und Höhe von 100 Pixeln -->
     <h1>Waren Ausgabe</h1>
     <p>Bitte fülle alles aus - VIELEN DANK ❤️</p>
-    <input type="text" name="name" placeholder="Name">
-    <input type="text" name="firstName" placeholder="Vorname">
-    <input type="text" name="phoneNumber" placeholder="Telefonnummer">
+    <input type="text" id="name" name="name" placeholder="Name">
+    <input type="text" id="firstName" name="firstName" placeholder="Vorname">
+    <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Telefonnummer">
     <label for="item">Artikel:</label>
     <select name="item" id="item">
       <option value="Abfallsäcke">Abfallsäcke</option>
