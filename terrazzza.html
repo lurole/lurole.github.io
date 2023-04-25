@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terrazzza 2023 - Waren Ausgabe</title>
+  <style>
+    body {
+      background-color: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      font-family: sans-serif;
+      color: white;
+      text-align: center;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+
+    input {
+      width: 100%;
+      max-width: 300px;
+      padding: 5px;
+    }
+
+    button {
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 10px 2px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    img {
+      width: 100%;
+      max-width: 600px;
+      height: auto;
+    }
+    
+    @media (max-width: 600px) {
+      img {
+        max-width: 100%;
+      }
+    }
+  </style>
+  <script>
+    function sendData() {
+      const form = document.getElementById("qr-form");
+      const url = "https://script.google.com/macros/s/AKfycbwfWoSRyO1uDKcKU_3blj4XTFmWEuXT_FkzyFJCMoCrqx-lqJJQOda_0Yc4K5MHTED2rA/exec";
+      const data = {
+        name: form.name.value,
+        firstName: form.firstName.value,
+        phoneNumber: form.phoneNumber.value,
+        item: form.item.value,
+        quantity: form.quantity.value,
+      };
+
+      fetch(url, {
+        method: "POST",
+        body: JSON.stringify(data),
+      })
+        .then((response) => response.text())
+        .then((responseText) => {
+          alert(responseText);
+          // Smileys erzeugen
+
+for (let i = 0; i < 1000; i++) {
+  const smiley = document.createElement("span");
+  smiley.innerHTML = "MERCIIIIII";
+  smiley.style.position = "fixed";
+  smiley.style.top = Math.floor(Math.random() * window.innerHeight) + "px";
+  smiley.style.left = Math.floor(Math.random() * window.innerWidth) + "px";
+  smiley.style.fontSize = Math.floor(Math.random() * 50) + "px";
+  smiley.style.color = "#" + Math.floor(Math.random() * 16777215).toString(16);
+  document.body.appendChild(smiley);
+}s
+
+// 5 Sekunden warten
+setTimeout(() => {
+  // Smileys entfernen
+  const smileys = document.querySelectorAll("span");
+  smileys.forEach((smiley) => smiley.remove());
+}, 5000);
+        });
+        
+        
+        
+    }
+  </script>
+</head>
+<body> 
+  
+  <form id="qr-form">
+    <img src="logo.png" alt="Logo" width="600" height="150"> <!-- Beispiel: Logo-Bild "logo.png" mit Breite und Höhe von 100 Pixeln -->
+    <h1>Waren Ausgabe</h1>
+    <p>Bitte fülle alles aus - VIELEN DANK ❤️</p>
+    <input type="text" name="name" placeholder="Name">
+    <input type="text" name="firstName" placeholder="Vorname">
+    <input type="text" name="phoneNumber" placeholder="Telefonnummer">
+    <input type="text" name="item" placeholder="Artikel">
+    <input type="number" name="quantity" placeholder="Anzahl">
+    <button type="button" onclick="sendData()">Senden</button>
+  </form>
+</body>
+</html>
