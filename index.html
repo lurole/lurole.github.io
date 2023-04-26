@@ -71,43 +71,6 @@
   </style>
   <script>
 
-function setCookie(name, value, days) {
-  var expires = "";
-  if (days) {
-    var date = new Date();
-    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-    expires = "; expires=" + date.toUTCString();
-  }
-  document.cookie = name + "=" + (value || "")  + expires + "; path=/";
-}
-
-    function getCookie(name) {
-  var nameEQ = name + "=";
-  var ca = document.cookie.split(';');
-  for(var i=0;i < ca.length;i++) {
-    var c = ca[i];
-    while (c.charAt(0)==' ') c = c.substring(1,c.length);
-    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
-  }
-  return null;
-}
-
-    function sendData() {
-      const form = document.getElementById("qr-form");
-      const url = "https://script.google.com/macros/s/AKfycbwfWoSRyO1uDKcKU_3blj4XTFmWEuXT_FkzyFJCMoCrqx-lqJJQOda_0Yc4K5MHTED2rA/exec";
-      const data = {
-        name: form.name.value,
-        firstName: form.firstName.value,
-        phoneNumber: form.phoneNumber.value,
-        item: form.item.value,
-        quantity: form.quantity.value,
-      };
-
-        // Set cookies for Name, Vorname and Telefonnummer
-  setCookie("name", data.name, 30);
-  setCookie("firstName", data.firstName, 30);
-  setCookie("phoneNumber", data.phoneNumber, 30);
-
       fetch(url, {
         method: "POST",
         body: JSON.stringify(data),
@@ -143,24 +106,10 @@ setTimeout(() => {
       console.log(getCookie("firstName"));
       console.log(getCookie("phoneNumber"));
     
-function fillFormFields() {
-  var name = getCookie("name");
-  var firstName = getCookie("firstName");
-  var phoneNumber = getCookie("phoneNumber");
-  if (name) {
-    document.getElementById("name").value = name;
-  }
-  if (firstName) {
-    document.getElementById("firstName").value = firstName;
-  }
-  if (phoneNumber) {
-    document.getElementById("phoneNumber").value = phoneNumber;
-  }
-}
   </script>
 </head>
-<body> 
-  
+<body onload="fillFormFields()"> <!-- onload Ereignis hier hinzufügen -->
+ 
   <form id="qr-form">
     <img src="logo.png" alt="Logo" width="600" height="150"> <!-- Beispiel: Logo-Bild "logo.png" mit Breite und Höhe von 100 Pixeln -->
     <h1>Waren Ausgabe</h1>
@@ -215,5 +164,54 @@ function fillFormFields() {
      <input type="text" name="deta" placeholder="Dettachement">
     <button type="button" onclick="sendData()">Senden</button>
   </form>
+  <script>
+    function setCookie(name, value, days) {
+  var expires = "";
+  if (days) {
+    var date = new Date();
+    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    expires = "; expires=" + date.toUTCString();
+  }
+  document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+}
+
+     function getCookie(name) {
+  var nameEQ = name + "=";
+  var ca = document.cookie.split(';');
+  for(var i=0;i < ca.length;i++) {
+    var c = ca[i];
+    while (c.charAt(0)==' ') c = c.substring(1,c.length);
+    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+  }
+  return null;
+}
+
+     function sendData() {
+      const form = document.getElementById("qr-form");
+      const url = "https://script.google.com/macros/s/AKfycbwfWoSRyO1uDKcKU_3blj4XTFmWEuXT_FkzyFJCMoCrqx-lqJJQOda_0Yc4K5MHTED2rA/exec";
+      const data = {
+        name: form.name.value,
+        firstName: form.firstName.value,
+        phoneNumber: form.phoneNumber.value,
+        item: form.item.value,
+        quantity: form.quantity.value,
+      };
+
+    function fillFormFields() {
+      var name = getCookie("name");
+      var firstName = getCookie("firstName");
+      var phoneNumber = getCookie("phoneNumber");
+      if (name) {
+        document.getElementById("name").value = name;
+      }
+      if (firstName) {
+        document.getElementById("firstName").value = firstName;
+      }
+      if (phoneNumber) {
+        document.getElementById("phoneNumber").value = phoneNumber;
+      }
+    }
+  </script>
+  
 </body>
 </html>
