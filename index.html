@@ -92,6 +92,20 @@ function setCookie(name, value, days) {
   return null;
 }
 
+function fillFormFields() {
+  var name = getCookie("name");
+  var firstName = getCookie("firstName");
+  var phoneNumber = getCookie("phoneNumber");
+  if (name) {
+    document.getElementById("name").value = name;
+  }
+  if (firstName) {
+    document.getElementById("firstName").value = firstName;
+  }
+  if (phoneNumber) {
+    document.getElementById("phoneNumber").value = phoneNumber;
+  }
+}
 
 
     function sendData() {
