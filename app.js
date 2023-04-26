@@ -29,6 +29,7 @@ function sendDataToGoogleSheet() {
     form.telefonnummer.value,
     form.artikel.value,
     form.anzahl.value,
+    from.detachement.value,
   ];
 
   gapi.client.sheets.spreadsheets.values.append({
