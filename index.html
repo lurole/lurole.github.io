@@ -92,22 +92,6 @@ function setCookie(name, value, days) {
   return null;
 }
 
-function fillFormFields() {
-  var name = getCookie("name");
-  var firstName = getCookie("firstName");
-  var phoneNumber = getCookie("phoneNumber");
-  if (name) {
-    document.getElementById("name").value = name;
-  }
-  if (firstName) {
-    document.getElementById("firstName").value = firstName;
-  }
-  if (phoneNumber) {
-    document.getElementById("phoneNumber").value = phoneNumber;
-  }
-}
-
-
     function sendData() {
       const form = document.getElementById("qr-form");
       const url = "https://script.google.com/macros/s/AKfycbwfWoSRyO1uDKcKU_3blj4XTFmWEuXT_FkzyFJCMoCrqx-lqJJQOda_0Yc4K5MHTED2rA/exec";
@@ -158,7 +142,21 @@ setTimeout(() => {
     console.log(getCookie("name"));
       console.log(getCookie("firstName"));
       console.log(getCookie("phoneNumber"));
-
+    
+function fillFormFields() {
+  var name = getCookie("name");
+  var firstName = getCookie("firstName");
+  var phoneNumber = getCookie("phoneNumber");
+  if (name) {
+    document.getElementById("name").value = name;
+  }
+  if (firstName) {
+    document.getElementById("firstName").value = firstName;
+  }
+  if (phoneNumber) {
+    document.getElementById("phoneNumber").value = phoneNumber;
+  }
+}
   </script>
 </head>
 <body> 
