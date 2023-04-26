@@ -106,9 +106,6 @@ function setCookie(name, value, days) {
         .then((response) => response.text())
         .then((responseText) => {
           alert(responseText);
-        console.log(getCookie("name"));
-      console.log(getCookie("firstName"));
-      console.log(getCookie("phoneNumber"));
           
 
           // Smileys erzeugen
@@ -133,7 +130,9 @@ setTimeout(() => {
         });
         
     }
-
+    console.log(getCookie("name"));
+      console.log(getCookie("firstName"));
+      console.log(getCookie("phoneNumber"));
 
   </script>
 </head>
