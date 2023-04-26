@@ -34,7 +34,7 @@ function sendDataToGoogleSheet() {
 
   gapi.client.sheets.spreadsheets.values.append({
     spreadsheetId: SPREADSHEET_ID,
-    range: 'Sheet1!A2:E2',
+    range: 'Sheet1!A2:F2',
     valueInputOption: 'RAW',
     insertDataOption: 'INSERT_ROWS',
     resource: {
